@@ -1,0 +1,32 @@
+|    |   model_name | input_data         |     f_MSE |      i_MSE |   i_MS_SSIM |      i_SSIM |     i_FID |     i_FaceNet |
+|---:|-------------:|:-------------------|----------:|-----------:|------------:|------------:|----------:|--------------:|
+|  0 |           -1 | training_img_input |  25.5479  |   0.473222 |         nan |   0.0442115 |   3.38669 |   0.000365529 |
+|  1 |           -1 | test_img_input     |  25.1259  |   0.472907 |         nan |   0.0435479 |   3.11301 |   0.000367582 |
+|  2 |           -1 | noise_input        | nan       | nan        |         nan | nan         | nan       | nan           |
+|  3 |            0 | training_img_input |  18.0846  |   0.260225 |         nan |   0.105213  |   3.40128 |   0.000606938 |
+|  4 |            0 | test_img_input     |  17.7474  |   0.260096 |         nan |   0.103984  |   3.12748 |   0.000606672 |
+|  5 |            0 | noise_input        | nan       | nan        |         nan | nan         | nan       | nan           |
+|  6 |           10 | training_img_input |   2.8422  |   0.248738 |         nan |   0.133639  |   3.40126 |   0.000431807 |
+|  7 |           10 | test_img_input     |   2.66628 |   0.248511 |         nan |   0.131664  |   3.12749 |   0.000431633 |
+|  8 |           10 | noise_input        | nan       | nan        |         nan | nan         | nan       | nan           |
+|  9 |           30 | training_img_input |   3.08612 |   0.238518 |         nan |   0.145172  |   3.40129 |   0.000413131 |
+| 10 |           30 | test_img_input     |   3.0046  |   0.238869 |         nan |   0.142512  |   3.12749 |   0.000415383 |
+| 11 |           30 | noise_input        | nan       | nan        |         nan | nan         | nan       | nan           |
+|  0 |          100 | training_img_input |   3.42932 |   0.228904 |         nan |   0.162575 |   3.40129 |   0.000411329 |
+|  1 |          100 | test_img_input     |   3.33802 |   0.232222 |         nan |   0.156075 |   3.12748 |   0.000416349 |
+|  2 |          100 | noise_input        | nan       | nan        |         nan | nan        | nan       | nan           |
+| 12 |          200 | training_img_input |   3.41614 |   0.22619  |         nan |   0.170869  |   3.38529 |   0.00045439  |
+| 13 |          200 | test_img_input     |   3.11869 |   0.234608 |         nan |   0.157694  |   3.07781 |   0.0004647   |
+| 14 |          200 | noise_input        | nan       | nan        |         nan | nan         | nan       | nan           |
+|  3 |          300 | training_img_input |   4.00842 |   0.225782 |         nan |   0.176057 |   3.38934 |   0.000457022 |
+|  4 |          300 | test_img_input     |   3.97174 |   0.240389 |         nan |   0.157071 |   3.11678 |   0.000473985 |
+|  5 |          300 | noise_input        | nan       | nan        |         nan | nan        | nan       | nan           |
+| 15 |          400 | training_img_input |   4.9926  |   0.226953 |         nan |   0.182076  |   3.39621 |   0.000465494 |
+| 16 |          400 | test_img_input     |   4.86235 |   0.250085 |         nan |   0.155697  |   3.11056 |   0.000478712 |
+| 17 |          400 | noise_input        | nan       | nan        |         nan | nan         | nan       | nan           |
+|  0 |          530 | training_img_input |   5.44191 |   0.227774 |         nan |   0.185396 |   3.37786 |   0.00043266  |
+|  1 |          530 | test_img_input     |   5.4501  |   0.259842 |         nan |   0.152031 |   3.11694 |   0.000446532 |
+|  2 |          530 | noise_input        | nan       | nan        |         nan | nan        | nan       | nan           |
+| 18 |          600 | training_img_input |   5.88903 |   0.234777 |         nan |   0.183384  |   3.36635 |   0.000425145 |
+| 19 |          600 | test_img_input     |   5.9318  |   0.27032  |         nan |   0.146058  |   3.1219  |   0.000438341 |
+| 20 |          600 | noise_input        | nan       | nan        |         nan | nan         | nan       | nan           |

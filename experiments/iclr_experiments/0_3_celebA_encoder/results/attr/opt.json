@@ -1,0 +1,47 @@
+{
+    "seed": 0,
+    "exp_group": "iclr_experiments/0_3_celebA_encoder",
+    "exp_id": "resnet",
+    "epochs": 300,
+    "train_interface": {
+        "optimizer": "Adam (\nParameter Group 0\n    amsgrad: False\n    betas: (0.9, 0.999)\n    capturable: False\n    differentiable: False\n    eps: 1e-08\n    foreach: None\n    fused: None\n    lr: 0.001\n    maximize: False\n    weight_decay: 0\n)",
+        "loss_fn": "MSELoss()",
+        "model": {
+            "classname": "CustomResNet18",
+            "in_dim": 3,
+            "out_dim": 40
+        },
+        "classname": "ClassificationTrainInterface"
+    },
+    "dataset": {
+        "ds_id": "celebA",
+        "batch_size": 128,
+        "num_workers": 2,
+        "pin_memory": true,
+        "shuffle": true,
+        "test_ds": "None",
+        "train_ds": "None",
+        "class_name": "DatasetCelebA",
+        "center_crop": "None",
+        "target_type": "attr",
+        "img_size": 256,
+        "to_zero_one": false
+    },
+    "start_from_epoch": 0,
+    "use_training_data_to_train": true,
+    "gpus": [
+        0,
+        1,
+        2,
+        3
+    ],
+    "debug_distributed": false,
+    "tboard_model_weights": false,
+    "tboard_model_outputs": false,
+    "save_model": true,
+    "save_model_freq": 100,
+    "print_freq": 100,
+    "verbose_mode": true,
+    "use_tboard": false,
+    "batch_size_schedule": "None"
+}
