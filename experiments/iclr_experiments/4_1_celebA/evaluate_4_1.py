@@ -1,22 +1,14 @@
-import json
 from os.path import join
 import pathlib
 import torch
 from datasets.celebA import DatasetCelebA
-import torchvision.transforms as T
-from datasets.ffhq import DatasetFFHQ
-from PIL import Image
-import numpy as np
-from evaluation.eval_helpers import _torch_to_numpy_image, plot_image_grid
 
 from misc_helpers.helpers import repo_dir
-from datasets.noise_generator import GaussianNoiseGenerator
-from evaluation.reconstruction import PGE_eval_from_folder, plot_stats_from_folder_list, plot_stats_from_parent_dir, plot_PGE_images_from_model
+from evaluation.reconstruction import PGE_eval_from_folder
 from models.model_helpers import IdentityModule
-from models.model_loader import load_model_from_dict, load_model_from_folder
+from models.model_loader import load_model_from_folder
 from models.simple_models import MLPEnsemble
 from models.style_gan import FinetunedStyleGenerator
-from training.loss import MTCNNLoss, SixDRepAngleLoss
 
 import importlib
 Inversion = importlib.import_module("baselines.1_background_know.model").Inversion

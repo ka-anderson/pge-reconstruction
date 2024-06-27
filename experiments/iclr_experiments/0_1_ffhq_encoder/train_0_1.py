@@ -1,7 +1,6 @@
 import pathlib
 import torch
 from torch import nn
-from torchvision.models import mobilenet_v2, resnet18, ResNet18_Weights
 from tqdm import tqdm
 
 from datasets.ffhq import DatasetFFHQAttributes
@@ -25,12 +24,9 @@ def classify():
     # model = CustomMobilenetV2(out_dim=10177)
     model = CustomResNet18(out_dim=32)
 
-    # model = load_model_from_folder(repo_dir("experiments", EXP_GROUP, "results", "mobilenet_128_minus"), weights_file_name="model_49", model_name="model")
-
     train_interface = ClassificationTrainInterface(
         optimizer=torch.optim.Adam(model.parameters()),
         loss=nn.MSELoss(),
-        # loss=nn.CrossEntropyLoss(),
         model=model,
     )
 
@@ -40,15 +36,11 @@ def classify():
         exp_group=EXP_GROUP,
         exp_id=f'resenet', 
         epochs=300, 
-        # start_from_epoch=50,
         print_freq=100,
         save_model=True,
         save_model_freq=25,
 
         train_interface=train_interface,
-
-        # debug_distributed=True,
-        # verbose_mode=True,
         gpus=[0, 1, 2, 3],
     )
 

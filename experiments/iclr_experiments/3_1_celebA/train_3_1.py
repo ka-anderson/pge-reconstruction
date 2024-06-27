@@ -1,17 +1,12 @@
-import json
 import pathlib
 import importlib
 import torch
 from os.path import join
 from datasets.celebA import DatasetCelebA
 from datasets.ffhq import DatasetFFHQ
-from torchvision.transforms.functional import center_crop
-from facenet_pytorch import MTCNN
-from datasets.noise_generator import GaussianNoiseGenerator
 
 
 from models.model_loader import load_model_from_dict, load_model_from_folder
-from models.simple_models import MLP
 from models.style_gan import FinetunedStyleGenerator
 from training.loss import FNplusMSE, FaceNetLoss, FaceNetLossCenter, GaussianLoss, SixDRepPoseLoss
 from training.train_interfaces.reconstruction import ReconstrInterfaceImage, ReconstrInterfaceImageFromNoise
@@ -44,14 +39,9 @@ def train_with_enc():
         # encoder=load_model_from_folder(ENC_FOLDER_ATBB, model_name="model", weights_file_name="model_299"),
 
         loss_fn=torch.nn.MSELoss(),
-        # loss_image_size=4,
-        # loss_fn=SixDRepPoseLoss(),
         # loss_fn=FaceNetLoss(),
         # loss_fn=FaceNetLossCenter(),
         noise_loss_fn=GaussianLoss(),
-    
-        # noise_gen=GaussianNoiseGenerator((BATCH_SIZE, 512)),
-        # batches_per_epoch=700,
     )
 
     run_training(
@@ -68,7 +58,6 @@ def train_with_enc():
 
         # gpus=[0, 1, 2, 3],
         verbose_mode=True,
-        start_from_epoch=30,
     ) 
 
 
@@ -107,7 +96,6 @@ def train_with_ds():
         # debug_distributed=True,
         # gpus=[0, 1, 2, 3],
         verbose_mode=True,
-        # start_from_epoch=41,
     ) 
 
 

@@ -1,7 +1,6 @@
 import pathlib
 import torch
 from torch import nn
-from torchvision.models import mobilenet_v2, resnet18
 from tqdm import tqdm
 
 from datasets.celebA import DatasetCelebA
@@ -23,22 +22,17 @@ EXP_GROUP = join("iclr_experiments", str(pathlib.Path(__file__).parent.resolve()
 
 
 def classify():
-    # dataset = DatasetCelebAHQ(batch_size=128, img_size=128, num_workers=2, pin_memory=True)
-
     dataset = DatasetCelebA(batch_size=128, img_size=256, num_workers=2, pin_memory=True, target_type=["bbox", "attr"], to_zero_one=False)
 
     # model = LeNet5(in_dim=3, out_dim=40, input_img_size=128)
     # model = CustomMobilenetV2(out_dim=40)
     # model = CustomMobilenetV2(out_dim=10177)
-
     model = CustomResNet18(out_dim=dataset.output_channels())
 
-    # model = load_model_from_folder(repo_dir("experiments", EXP_GROUP, "results", "mobilenet_128_minus"), weights_file_name="model_49", model_name="model")
 
     train_interface = ClassificationTrainInterface(
         optimizer=torch.optim.Adam(model.parameters()),
         loss=nn.MSELoss(),
-        # loss=nn.CrossEntropyLoss(),
         model=model,
     )
 
@@ -48,15 +42,11 @@ def classify():
         exp_group=EXP_GROUP,
         exp_id=f'attrBB', 
         epochs=300, 
-        # start_from_epoch=50,
         print_freq=1000,
         save_model=True,
         save_model_freq=100,
 
         train_interface=train_interface,
-
-        # debug_distributed=True,
-
         verbose_mode=True,
         # gpus=[0, 1, 2, 3],
     )
@@ -67,9 +57,6 @@ def create_dataset():
     with torch.no_grad():
         dataset = DatasetCelebA(batch_size=1, img_size=256, num_workers=2, pin_memory=True, target_type="attr", to_zero_one=False)._get_train_dataset()
         deepface = DeepFaceLoss("ArcFace")
-        # enc = load_model_from_folder(repo_dir("experiments", EXP_GROUP, "results", "attr"), weights_file_name="model_300", model_name="model").cuda()
-        # G = FinetunedStyleGenerator(img_size=256).cuda()
-        # noise_gen = GaussianNoiseGenerator((128, 512))
 
         feature_list = []
         for i in range(10):

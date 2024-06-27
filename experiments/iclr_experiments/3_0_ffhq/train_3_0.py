@@ -3,8 +3,6 @@ import pathlib
 import torch
 from os.path import join
 from datasets.ffhq import DatasetFFHQ
-from torchvision.transforms.functional import center_crop
-from facenet_pytorch import MTCNN
 
 
 from models.model_loader import load_model_from_dict, load_model_from_folder
@@ -33,15 +31,9 @@ def train():
         pre_gen=pre_gen,
 
         encoder=load_model_from_folder(ENC_FOLDER_ATTR, model_name="model", weights_file_name="model_300"),
-        # encoder=load_model_from_folder(ENC_FOLDER_AUTO, model_name="encoder", weights_file_name="encoder_100"),
-
-        loss_fn=torch.nn.MSELoss(),
+        # loss_fn=torch.nn.MSELoss(),
         loss_fn=FaceNetLossCenter(),
         noise_loss_fn=GaussianLoss()
-        # loss_fn=FaceNetLoss(manual_crop_window=[50, 50, 180, 140]),
-        # loss_fn=FNplusMSE(),
-    
-        # loss_image_size=128,
     )
 
     run_training(
@@ -57,7 +49,6 @@ def train():
 
         gpus=[0, 1, 2, 3],
         # verbose_mode=True,
-        # start_from_epoch=111,
     ) 
 
 
