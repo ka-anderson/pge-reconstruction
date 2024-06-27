@@ -8,7 +8,7 @@ from datasets.ffhq import DatasetFFHQ
 from models.model_loader import load_model_from_dict, load_model_from_folder
 from models.simple_models import MLP
 from models.style_gan import FinetunedStyleGenerator
-from training.loss import FaceNetLoss, FaceNetLossCenter, GaussianLoss
+from training.loss import FaceNetLossCenter, GaussianLoss
 from training.train_interfaces.reconstruction import ReconstrInterfaceImage
 from training.trainer import run_training
 from misc_helpers.helpers import repo_dir

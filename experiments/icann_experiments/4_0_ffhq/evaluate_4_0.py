@@ -1,18 +1,12 @@
-import json
 from os.path import join
 import pathlib
 import torch
 from datasets.celebA import DatasetCelebA
-import torchvision.transforms as T
-from datasets.celebA_hq import DatasetCelebAHQ
-from datasets.ffhq import DatasetFFHQ
-from PIL import Image
-import numpy as np
 
 from misc_helpers.helpers import repo_dir
 from datasets.noise_generator import GaussianNoiseGenerator
-from evaluation.reconstruction import PGE_eval_from_folder, plot_stats_from_folder_list, plot_stats_from_parent_dir, plot_PGE_images_from_model
-from models.model_loader import load_model_from_dict, load_model_from_folder
+from evaluation.reconstruction import PGE_eval_from_folder
+from models.model_loader import load_model_from_folder
 from models.simple_models import MLPEnsemble
 from models.style_gan import FinetunedStyleGenerator
 from training.loss import MTCNNLoss
@@ -51,8 +45,6 @@ def combine():
         model_path=repo_dir("experiments", EXP_GROUP), 
         # dataset=DatasetFFHQ(batch_size=BATCH_SIZE, img_size=256, to_zero_one=False),
         dataset=DatasetCelebA(batch_size=BATCH_SIZE, img_size=256, target_type="attr", to_zero_one=False),
-        # dataset=DatasetCelebAHQ(batch_size=BATCH_SIZE, img_size=256, to_zero_one=False),
-        # noise_generator=GaussianNoiseGenerator((BATCH_SIZE, 512)), 
         p_models={"mse": P_MSE, "fn": P_FN, "mix": P_MIX}, 
         g_models={"": G},
         e_models={"": E},

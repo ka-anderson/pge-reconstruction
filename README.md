@@ -1,6 +1,5 @@
 # Revealing Unintentional Information Leakage in Low-Dimensional Facial Portrait Representations
-
-This repository contains code to reproduce the results for the paper currently under review for the ICLR 2024. 
+*Kathleen Anderson and Thomas Martinetz, ICANN 2024*
 
 We evaluate the information that can unintentionally leak into the low dimensional output of a neural network, by reconstructing an input image from a 40- or 32-element feature vector that intends to only describe abstract attributes of a facial portrait. The reconstruction only uses blackbox-access to the image encoder which generates the feature vector. Other than previous work, we leverage recent knowledge about image generation and facial similarity, implementing a method that outperforms the current state-of-the-art. Our strategy uses the pretrained StyleGAN and a new loss function that compares the perceptual similarity of portraits by mapping them into the latent space of a FaceNet embedding. Additionally, we present a new technique which fuses the output of an ensemble, to deliberately generate specific aspects of the recreated image. 
 
